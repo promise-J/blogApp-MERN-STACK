@@ -1,0 +1,102 @@
+.settings{
+    display: flex;
+}
+
+.settingWrapper{
+    flex: 9;
+    /* background-color: red; */
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.settingTitles{
+    display: flex;
+    /* background-color: blue; */
+    padding: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.setDel{
+    /* font-size: 20px; */
+    margin: 0 20px 0 0;
+}
+
+.setUpdate{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.set-pic-div{
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    justify-content: flex-start;
+    /* background-color: purple; */
+}
+
+.set-pic{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.set-pic-icon{
+    font-size: 80px;
+    border-radius: 50%;
+    border: 1px solid black;
+    padding: 30px;
+    margin-left: 20px;
+}
+
+.set-form{
+    /* background-color: red; */
+    min-height: 279px;
+}
+
+.form-div{
+    /* background-color: blueviolet; */
+    /* margin: 20px; */
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-div label{
+    font-size: 20px;
+    margin: 10px;
+}
+
+.form-item{
+    height: 40px;
+    border-radius: 5px;
+    padding: 12px;
+    /* border: 2px solid black; */
+    border: none;
+    border-bottom: 1px solid rgb(177, 168, 168);
+    outline: none;
+    cursor: pointer;
+}
+
+.set-submit{
+    /* font-size: 20px; */
+    background-color: teal;
+    padding: 10px;
+    width: 100px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    margin: 10px 0 0 10px;
+    color: white;
+}
+
+.set-submit:hover{
+    background-color: rgb(75, 187, 187);
+}
+
+
+
+
+
