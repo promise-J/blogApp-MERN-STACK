@@ -22,7 +22,6 @@
     margin: 30px;
     color: rgba(14, 12, 12);
     text-shadow: 2px 3px teal;
-
 }
 
 .login-register{
@@ -70,6 +69,11 @@
     border-radius: 5px;
     outline: none;
     font-size: 15px;
+}
+
+.log-submit:disabled{
+    background-color: rgb(99, 95, 95);
+    cursor: not-allowed;
 }
 
 .login-form-div > label{

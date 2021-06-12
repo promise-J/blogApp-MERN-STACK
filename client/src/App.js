@@ -11,10 +11,14 @@ import {
   Route
 } from "react-router-dom";
 import Write from './components/pages/write/Write';
+import { useContext } from 'react';
+import { Context } from './context/Context';
 
 
 function App() {
-  // const user = false
+  const {user} = useContext(Context)
+  console.log(user)
+
   return (
     <div className="App">
        <Router>
@@ -25,23 +29,23 @@ function App() {
           </Route>
 
           <Route path="/settings">
-          <Settings />
+          {user ? <Settings/> : <Home />}
           </Route>
 
           <Route path="/login">
-          <Login />
+            {user? <Home/> : <Login />}
           </Route>
 
           <Route path="/register">
-            <Register />
+            {user ? <Home/> : <Register />}
           </Route>
 
           <Route path='/write'>
-            <Write />
+            {user ? <Write/> : <Home />}
           </Route>
 
-          <Route path="/post/:id">
-          <Single />
+          <Route path="/posts/:id">
+            {user? <Single/> : <Home />}
           </Route>
           
         </Switch>

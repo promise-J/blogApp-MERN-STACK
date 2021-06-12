@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import './TopBar.css'
 import Image from '../../asset/me.jpg'
+import { useContext } from "react";
+import { Context } from "../../context/Context";
 
 export default function TopBar() {
-  const user = true
+  const {user, dispatch} = useContext(Context)
+  console.log(user)
+  const handleLogout = ()=> {
+    dispatch({type: 'LOGOUT'})
+  }
     return (
         <div className="TopBar">
             <div className="topbar-first">
@@ -18,20 +24,20 @@ export default function TopBar() {
                   <li className='top-list-item'><Link className='link' to='/about'>ABOUT</Link></li>
                   <li className='top-list-item'><Link className='link' to='/contact'>CONTACT</Link></li>
                   <li className='top-list-item'><Link className='link' to='/write'>WRITE</Link></li>
+                  
                   {
-                    user && <li className='top-list-item'>LOGOUT</li>
+                    user ? <li onClick={handleLogout}><Link className='link top-list-item'>LOGOUT</Link></li> : (<><li><Link className='link top-list-item' to='/login'>LOGIN</Link></li> <li><Link className='link top-list-item' to='/register'>REGISTER</Link></li></>)
+
                   }
               </ul>
             </div>
+            {user &&
             <div className="topbar-third">
-                  <img src={Image} alt="profile" className='image' /> 
-        
-
+                  <img src={user.photo} alt="profile" className='image' /> 
                     <i className="fas fa-search top-item-search"></i>
-                  <ul className="top-list">
-                    {!user && <li><Link className='link' to='/register'>REGISTER</Link></li>}
-                  </ul>
+                    <p style={{marginLeft: '20px'}}>{user.username}</p>
             </div>
+            }
         </div>
     )
 }

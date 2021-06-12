@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const multer = require('multer')
 const cors = require('cors')
+const path = require('path')
 
 
 require('dotenv').config()
@@ -15,19 +16,20 @@ const app = express()
 
 app.use(express.json())
 app.use(cors())
+app.use('/images', express.static(path.join(__dirname, 'images')))
 
 const storage = multer.diskStorage({
   destination: (req, file, cb)=>{
     cb(null, 'images')
   },
   filename: (req, file, cb)=>{
-    cb(null, 'promise.PNG')
+    cb(null, req.body.name)
   }
 })
 
 const upload = multer({storage: storage})
 app.post('/api/upload', upload.single('file'), (req, res)=>{
-  res.status(200).send('Picture uploaded...')
+  res.status(200).json('Picture uploaded...')
 })
 
 app.use('/api/auth', AuthRoute)

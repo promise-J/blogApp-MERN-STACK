@@ -14,6 +14,16 @@ router.get('/:id', async (req, res)=>{
     }
 })
 
+//get all users
+router.get('/', async (req, res)=> {
+    try {
+        const users = await User.find()
+        res.send(users)
+    } catch (error) {
+        res.send(error)
+    }
+})
+
 
 //delete user
 router.delete('/:id', async(req, res)=>{

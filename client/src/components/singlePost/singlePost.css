@@ -13,9 +13,6 @@
   border-radius: 10px;
 }
 
-.singlePost > .post-info{
-}
-
 .post-icons{
   padding: 20px;
   display: flex;
@@ -40,13 +37,17 @@
 }
 
 .name2{
-  font-size: 20px;
-  color: black;
+  font-size: 40px;
+  color: rgb(18, 206, 58);
   font-weight: lighter;
+  text-transform: capitalize;
 }
 
-.postDesc{
+.singpostDesc{
   line-height: 2.4;
+  color: green;
+  font-size: 20px;
+  display: block;
 }
 
 .post-title{

@@ -40,12 +40,13 @@ router.delete('/:id', async(req, res)=> {
     }
 })
 
+//get one
 router.get('/:id', async(req, res)=>{
    try {
        const post = await Post.findById(req.params.id)
-       res.send(post)
+        res.send(post)
    } catch (error) {
-       res.status(500).send(error)
+       return res.status(500).send(error)
    }
 })
 
