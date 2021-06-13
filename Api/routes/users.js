@@ -38,9 +38,10 @@ router.delete('/:id', async(req, res)=>{
 //update a user
 router.put('/:id', async(req, res)=>{
     try {
-        await User.findByIdAndUpdate(req.params.id, {
+        const updatedUser = await User.findByIdAndUpdate(req.params.id, {
             $set: req.body
         }, {new: true})
+        res.status(200).send(updatedUser)
     } catch (error) {
         res.status(500).send(error)
     }
@@ -48,3 +49,4 @@ router.put('/:id', async(req, res)=>{
 
 
 module.exports = router
+

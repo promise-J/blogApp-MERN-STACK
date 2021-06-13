@@ -17,7 +17,7 @@ import { Context } from './context/Context';
 
 function App() {
   const {user} = useContext(Context)
-  console.log(user)
+  // console.log(user)
 
   return (
     <div className="App">

@@ -1,12 +1,12 @@
 import './post.css'
 import {Link} from 'react-router-dom'
-import postImg from '../../asset/bg.jpg'
+// import postImg from '../../asset/bg.jpg'
 
 import React from 'react'
 
 export default function Post({post}) {
-    // console.log(post._id)
-    const PF = "http://localhost:5000/images/"
+    console.log(post)
+    const PF = "http://localhost:5000/"
     return (
         <div className='post'>            
            {post.photo && <img src={PF + post.photo} alt="my self" className='post-img' />}

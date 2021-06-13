@@ -57,3 +57,33 @@
 .time-crt{
   font-style: italic;
 }
+
+.editing-section{
+  /* background-color: blue; */
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+}
+
+.editing-button{
+  width: 100px;
+  align-self: flex-end;
+  color: white;
+  background-color: teal;
+  margin-top: 10px;
+  padding: .5rem;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+}
+
+.single-editing-input{
+  margin: 10px;
+  height: 40px;
+  outline: none;
+  outline-width: 0;
+  border: 1px solid rgb(199, 190, 190);
+  padding: 1rem;
+  border-radius: 10px;
+}

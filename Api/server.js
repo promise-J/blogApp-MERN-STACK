@@ -29,7 +29,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage: storage})
 app.post('/api/upload', upload.single('file'), (req, res)=>{
-  res.status(200).json('Picture uploaded...')
+  console.log(req.file);
+  res.status(200).json(req.file.path)
 })
 
 app.use('/api/auth', AuthRoute)
@@ -40,7 +41,7 @@ app.use('/api/users', UserRoute)
 const port = process.env.PORT || 5000
 
 require('dotenv').config()
-mongoose.connect(db, {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true}, ()=>{
+mongoose.connect(db, {useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: true, useCreateIndex: true}, ()=>{
 console.log('MongoDB server is running well too...');
 }, )
 

@@ -5,10 +5,12 @@ import './write.css'
 import axios from 'axios'
 
 import {Context} from '../../../context/Context'
+import { useHistory } from 'react-router-dom'
 
 
 
 export default function Write() {
+    const history = useHistory()
     const {user} = useContext(Context)
     const [title, setTitle] = useState('')
     const [desc, setDesc] = useState('')
@@ -28,16 +30,20 @@ export default function Write() {
             const filename = Date.now() + file.name
             data.append('name', filename)
             data.append('file', file)
-            newPost.photo = filename
+            // newPost.photo = data
             try {
-                await axios.post("/upload", data)
+                const res = await axios.post("/upload", data)
+                console.log(res.data, 'from images side')
+                newPost.photo = res.data
             } catch (error) {
-                console.log(error)
+                console.log(error, 'from image side')
             }
         }
         try {
+            console.log(newPost, 'before saving.')
             const res = await axios.post("/posts", newPost)
-            window.location.replace("/posts/" + res.data._id)
+            history.push('/posts/' + res.data._id)
+            // window.location.replace("/posts/" + res.data._id)
             console.log(res)
         } catch (error) {
             console.log(error)

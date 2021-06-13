@@ -4,11 +4,12 @@ const Post = require('../models/Post-model')
 
 //create posts
 router.post('/', async (req, res)=> {
-    const {username, title, desc } = req.body
+    const {username, title, desc, photo } = req.body
     const newPost = new Post({
         username,
         title,
-        desc
+        desc,
+        photo
     })
 
     try {

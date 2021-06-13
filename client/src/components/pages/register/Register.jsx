@@ -1,11 +1,12 @@
 import './register.css'
 import React, {useState} from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 
 
 export default function Register() {
+    const history = useHistory()
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -23,7 +24,8 @@ export default function Register() {
                 setError(true)
                 setErrorText('User already exists')
            }else{
-               window.location.replace('login')
+            //    window.location.replace('login')
+               history.push('/login')
            }
         //    res.data && window.location.replace('/login')
        } catch (error) {
