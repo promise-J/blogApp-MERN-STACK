@@ -6,6 +6,7 @@ import React, { useContext, useState } from 'react'
 import { Context } from '../../../context/Context'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
+const PF = 'http://localhost:5000/'
 
 export default function Settings() {
     const history = useHistory()
@@ -13,6 +14,18 @@ export default function Settings() {
     const [email, setEmail] = useState(user.email)
     const [username, setUsername] = useState(user.username)
     const [file, setFile] = useState('')
+
+    const handleDelete = async (e) => {
+       e.preventDefault()
+
+       try {
+           await axios.delete('/users/'+ user._id)
+           dispatch({type: 'LOGOUT'})
+           history.push('/')
+       } catch (error) {
+           console.log(error)
+       }
+    }
     
     const handleSubmit = async(e)=> {
         e.preventDefault()
@@ -57,11 +70,11 @@ export default function Settings() {
         <div className='settings'>
         <div className='settingWrapper'>
             <div className="settingTitles">
-                <span className="setUpdate">Update Your Account</span>
-                <span className="setDel">Delete Account</span>
+                <span className="setUpdate" onClick={handleSubmit}>Update Your Account</span>
+                <span className="setDel" onClick={handleDelete}>Delete Account</span>
             </div>
             <div className="set-pic-div">
-            <img src={file ? URL.createObjectURL(file) : user.photo} alt="my profile" className='set-pic' />
+            <img src={file ? URL.createObjectURL(file) : PF + user.photo} alt="my profile" className='set-pic' />
             <label htmlFor="dp"><i className="far fa-user set-pic-icon"></i></label>
             <input type="file" id='dp' hidden='true' onChange={e=> setFile(e.target.files[0])} />
             </div>
